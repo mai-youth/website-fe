@@ -1,18 +1,27 @@
+/* eslint-disable */
 import React from 'react';
-import bgImage from '../assets/prayer.jpg';
+import Logo from './Logo';
 
 class App extends React.Component {
-   
   render(){
-    return(
+    return (
       <div className="App">
         <div className="Header">
-          <h1>MAI Youth</h1>
+          <div className="HeaderLeft">
+            <div className="HeaderLogo">
+              {Logo}
+            </div>
+            <h1 className="HeaderTitle">MAI Youth</h1>
+          </div>
+          <div className="HeaderRight">
+            <h2 className="HeaderHome">Home</h2>
+            <h2 className="HeaderArticles">Articles</h2>
+            <h2 className="HeaderContact">Contact Us</h2>
+          </div>
         </div>
       </div>
-    );  
+    );
   }
-
 }
 
 export default App;
