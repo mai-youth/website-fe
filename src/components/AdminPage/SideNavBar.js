@@ -4,7 +4,7 @@ import { Link } from 'react-dom';
 
 function SideNavBar() {
   return (
-    <Menu fixed="left" borderless vertical>
+    <Menu positon="left" borderless vertical>
       <Menu.Item as={Link} to="/articles" name="articles">
         <h4>
             Articles

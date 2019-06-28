@@ -1,15 +1,19 @@
 import React from 'react';
-import SideNavBar from './SideNavBar';
 import TopMenu from './TopMenu';
+import Articles from './Articles';
+import SideNavBar from './SideNavBar';
 
 function Layout() {
   return (
-    <div className="grid">
-      <div className="main-content">
+    <div className="Grid">
+      <div className="TopMenu">
+        <TopMenu />
+      </div>
+      <div className="SideMenu">
         <SideNavBar />
       </div>
-      <div className="menu">
-        <TopMenu />
+      <div className="MainContent">
+        <Articles />
       </div>
     </div>
   );
