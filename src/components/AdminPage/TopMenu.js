@@ -1,14 +1,14 @@
 import React from 'react';
-import { Menu, Image } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
+import maiLogo from '../Logo';
 
 
 function TopMenu() {
   return (
-    <Menu position="top" className="top-menu">
+    <Menu position="top" className="top-menu" borderless>
       <Menu.Item className="LogoMenuItem">
         <div className="display-inline logo-space">
-          <Image src=".../Assets/maiLogo.jpg" />
-          <p>Mai Youth</p>
+          {maiLogo}
         </div>
       </Menu.Item>
     </Menu>
