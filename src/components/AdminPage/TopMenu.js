@@ -5,11 +5,14 @@ import maiLogo from '../Logo';
 
 function TopMenu() {
   return (
-    <Menu position="top" className="top-menu" borderless>
+    <Menu className="TopMenu" position="top" borderless>
       <Menu.Item className="LogoMenuItem">
-        <div className="display-inline logo-space">
+        <div>
           {maiLogo}
         </div>
+      </Menu.Item>
+      <Menu.Item className="AdminPageTitle">
+        <h2>Admin</h2>
       </Menu.Item>
     </Menu>
   );

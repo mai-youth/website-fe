@@ -22,9 +22,9 @@ function Articles() {
 
         <Table.Body>
           <Table.Row>
-            <Table.Cell>Islam</Table.Cell>
-            <Table.Cell>Mahmoud Almahroum</Table.Cell>
-            <Table.Cell>Islam In Europe</Table.Cell>
+            <Table.Cell>Article Name</Table.Cell>
+            <Table.Cell>Author</Table.Cell>
+            <Table.Cell>Description</Table.Cell>
             <Table.Cell>
               <Button size="mini" icon>
                 <Icon name="pencil" />

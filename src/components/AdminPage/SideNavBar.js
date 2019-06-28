@@ -1,19 +1,15 @@
 import React from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 import { Link } from 'react-dom';
 
 function SideNavBar() {
   return (
-    <Menu positon="left" borderless vertical>
-      <Menu.Item as={Link} to="/articles" name="articles">
-        <h4>
-            Articles
-        </h4>
+    <Menu className="SideNavBar" positon="left" borderless vertical>
+      <Menu.Item className="NavBarItem" as={Link} to="/articles" name="articles">
+        <Icon className="NavBarIcon" name="file alternate" />
       </Menu.Item>
-      <Menu.Item as={Link} to="/users" name="users">
-        <h4>
-            Users
-        </h4>
+      <Menu.Item className="NavBarItem" as={Link} to="/users" name="users">
+        <Icon className="NavBarIcon" name="users" />
       </Menu.Item>
     </Menu>
   );
