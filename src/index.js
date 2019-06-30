@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
 
 import './sass/index.sass';
-import App from './components/App';
+import Router from './Router';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Router />, document.getElementById('root'));

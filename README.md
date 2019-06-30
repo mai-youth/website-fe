@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mai-youth/website-fe.svg?style=svg)](https://circleci.com/gh/mai-youth/website-fe)
+
 # website
 Main website for MAI Youth.
 

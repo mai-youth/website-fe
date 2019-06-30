@@ -7,9 +7,7 @@ function TopMenu() {
   return (
     <Menu className="TopMenu" position="top" borderless>
       <Menu.Item className="LogoMenuItem">
-        <div>
-          {maiLogo}
-        </div>
+        {maiLogo}
       </Menu.Item>
       <Menu.Item className="AdminPageTitle">
         <h2>Admin</h2>
