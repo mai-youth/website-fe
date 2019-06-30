@@ -4,7 +4,7 @@ import { Link } from 'react-dom';
 
 function SideNavBar() {
   return (
-    <Menu className="SideNavBar" positon="left" borderless vertical>
+    <Menu className="SideNavBar" positon="left" vertical>
       <Menu.Item className="NavBarItem" as={Link} to="/articles" name="articles">
         <Icon className="NavBarIcon" name="file alternate" />
       </Menu.Item>
