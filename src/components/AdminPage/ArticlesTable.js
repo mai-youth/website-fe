@@ -11,6 +11,7 @@ class ArticlesTable extends PureComponent {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line react/destructuring-assignment
     this.props.getArticles();
   }
 
