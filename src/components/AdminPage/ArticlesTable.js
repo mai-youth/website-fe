@@ -25,7 +25,7 @@ class ArticlesTable extends PureComponent {
       <Table.Row key={id}>
         <Table.Cell>{title}</Table.Cell>
         <Table.Cell>{author}</Table.Cell>
-        <Table.Cell>Description</Table.Cell>
+        <Table.Cell>{`${body.slice(0, 25)}...`}</Table.Cell>
         <Table.Cell>
           <Button size="mini" icon>
             <Icon name="pencil" />
