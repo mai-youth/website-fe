@@ -1,45 +1,19 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Segment, Header, Table, Button, Icon } from 'semantic-ui-react';
+import { Segment, Header, Table, Button } from 'semantic-ui-react';
 import { getArticles } from '../../actions/articles';
+import ArticleTableRows from './ArticleTableRows';
 
 class ArticlesTable extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.renderRows = this.renderRows.bind(this);
-  }
-
   componentDidMount() {
     // eslint-disable-next-line react/destructuring-assignment
     this.props.getArticles();
   }
 
-  renderRows() {
+  render() {
     const { articles } = this.props;
 
-    if (!articles || articles.length === 0) {
-      return null;
-    }
-
-    return articles.map(({ id, title, body, author }) => (
-      <Table.Row key={id}>
-        <Table.Cell>{title}</Table.Cell>
-        <Table.Cell>{author}</Table.Cell>
-        <Table.Cell>{`${body.slice(0, 25)}...`}</Table.Cell>
-        <Table.Cell>
-          <Button size="mini" icon>
-            <Icon name="pencil" />
-          </Button>
-          <Button color="red" size="mini" icon>
-            <Icon name="delete" />
-          </Button>
-        </Table.Cell>
-      </Table.Row>
-    ));
-  }
-
-  render() {
     return (
       <Segment position="center">
         <Header className="ArticlesHeader">
@@ -56,7 +30,7 @@ class ArticlesTable extends PureComponent {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {this.renderRows()}
+            <ArticleTableRows articles={articles} />
           </Table.Body>
         </Table>
       </Segment>
