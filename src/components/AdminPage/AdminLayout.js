@@ -1,6 +1,6 @@
 import React from 'react';
 import TopMenu from './TopMenu';
-import Articles from './Articles';
+import ArticlesTable from './ArticlesTable';
 import SideNavBar from './SideNavBar';
 
 function Layout() {
@@ -13,7 +13,7 @@ function Layout() {
         <SideNavBar />
       </div>
       <div className="MainContent">
-        <Articles />
+        <ArticlesTable />
       </div>
     </div>
   );
