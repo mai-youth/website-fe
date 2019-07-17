@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import App from './components/App';
+import App from './components/HomePage/App';
 import AdminLayout from './components/AdminPage/AdminLayout';
 
 export default function Router() {

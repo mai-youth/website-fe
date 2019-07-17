@@ -1,22 +1,38 @@
-.App
-  text-align: center
-
-
-.App-logo
-  animation: App-logo-spin infinite 20s linear
-  height: 40vmin
-  pointer-events: none
-
-
-.App-header
-  background-color: #282c34
-  min-height: 100vh
+.Header
   display: flex
-  flex-direction: column
-  align-items: center
-  justify-content: center
-  font-size: calc(10px + 2vmin)
-  color: black
+  position: fixed
+  top: 0
+  width: 100%
+  border-bottom: 1px solid #0000001f
+  background-color: #ffffff66
+  height: 45px
+  justify-content: flex-end
+  z-index: 10
+
+  .HeaderLeft
+    display: flex
+    color: black
+    width: 100%
+    justify-content: flex-start
+    align-items: center
+    margin: 0 0 0 10px
+
+    .HeaderTitle
+      margin: 0 0 0 10px
+
+  .HeaderRight
+    width: 410px
+    height: 50px
+    display: flex
+    justify-content: space-evenly
+    align-items: center
+
+    .HeaderHome, .HeaderArticles, .HeaderContact
+      margin: 0
+      cursor: pointer
+    
+    .HeaderHome:hover, .HeaderArticles:hover, .HeaderContact:hover
+      color: rgba(0, 0, 0, 0.51)
 
 .Grid
   .TopMenu
@@ -63,15 +79,3 @@
 
 .NewArticleButton
   background-color: #FFFFFF
-
-.App-link
-  color: #61dafb
-
-@keyframes App-logo-spin
-  from
-    transform: rotate(0deg)
-  
-  to
-    transform: rotate(360deg)
-  
-
