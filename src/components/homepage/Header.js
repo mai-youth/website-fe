@@ -1,11 +1,11 @@
 import React from 'react';
-import Logo from './Logo';
+import Logo from '../Logo';
 
-function Header() {
+export default function Header() {
   return (
     <div className="Header">
       <div className="HeaderLeft">
-        {Logo}
+        <Logo />
         <h1 className="HeaderTitle">MAI Youth</h1>
       </div>
       <div className="HeaderRight">
@@ -16,5 +16,3 @@ function Header() {
     </div>
   );
 }
-
-export default Header;

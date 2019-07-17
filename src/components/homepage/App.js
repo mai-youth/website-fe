@@ -1,19 +1,13 @@
-/* eslint-disable */
 import React from 'react';
+import { Image } from 'semantic-ui-react';
 import Header from './Header';
-import Background from './Background';
+import screenImg from '../../assets/prayer.jpg';
 
-class App extends React.Component {
-  render(){
-    return(
-      <div className="App">
-        <div className="Background">
-          {Background}
-        </div>
-        <Header />
-      </div>
-    )
-  }
+export default function App() {
+  return (
+    <div>
+      <Header />
+      <Image src={screenImg} fluid />
+    </div>
+  );
 }
-
-export default App;
