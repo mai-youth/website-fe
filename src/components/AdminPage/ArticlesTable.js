@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Segment, Header, Table, Button } from 'semantic-ui-react';
 import { getArticles } from '../../actions/articles';
 import ArticleTableRows from './ArticleTableRows';
+import NewArticleModal from './NewArticleModal';
 
 class ArticlesTable extends PureComponent {
   componentDidMount() {
@@ -19,7 +20,7 @@ class ArticlesTable extends PureComponent {
         <Header className="ArticlesHeader">
           Articles
         </Header>
-        <Button className="NewArticleButton" fixed="right">New Article</Button>
+        <NewArticleModal trigger={<Button className="NewArticleButton" fixed="right">New Article</Button>} />
         <Table compact celled>
           <Table.Header fullWidth>
             <Table.Row>
