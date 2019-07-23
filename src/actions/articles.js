@@ -12,3 +12,16 @@ export function getArticles() {
     });
   };
 }
+
+export function addArticle(articleDetails) {
+  return async (dispatch) => {
+    const response = await ArticlesApi.addArticle(articleDetails);
+    const json = await response.json();
+
+    if (json.status === 200) {
+      dispatch({ type: Actions.ADDED_ARTICLE });
+    } else {
+      dispatch({ type: Actions.ERROR_ADDING_ARTICLE });
+    }
+  };
+}
