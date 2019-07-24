@@ -11,3 +11,11 @@ export function addArticle(articleDetails) {
     body: JSON.stringify(articleDetails),
   });
 }
+
+export function editArticle(id, editDetails) {
+  return fetch(`${API_BASE}/articles/article/${id}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(editDetails),
+  });
+}
