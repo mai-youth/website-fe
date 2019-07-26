@@ -10,7 +10,7 @@ export default function Header() {
       className="menu-header"
     >
       <Menu.Item><Logo /></Menu.Item>
-      <Menu.Item className="menu-item">MAI Youth</Menu.Item>
+      <Menu.Item className="menu-item" href="/">MAI Youth</Menu.Item>
 
       <Menu.Menu position="right">
         <Menu.Item className="menu-item" href="/articles">Articles</Menu.Item>

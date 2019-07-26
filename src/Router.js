@@ -1,15 +1,17 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './components/HomePage/App';
 import AdminLayout from './components/AdminPage/AdminLayout';
+import ContactPage from './components/ContactPage/ContactPage';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Redirect exact from="/" to="/app" />
-        <Route path="/app" component={App} />
-        <Route path="/admin" component={AdminLayout} />
+        <Route exact path="/" component={App} />
+        <Route exact path="/admin" component={AdminLayout} />
+        <Route exact path="/contact" component={ContactPage} />
+        <Route path="/" component={App} />
       </Switch>
     </BrowserRouter>
   );
