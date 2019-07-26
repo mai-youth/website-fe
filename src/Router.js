@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import App from './components/HomePage/App';
 import AdminLayout from './components/AdminPage/AdminLayout';
-import ArticlesPage from './components/articles/ArticlesPage';
+import ArticlesPage from './components/Articles/ArticlesPage';
 
 export default function Router() {
   return (
