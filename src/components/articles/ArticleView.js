@@ -25,19 +25,19 @@ class ArticleView extends PureComponent {
       );
     }
 
-    const { title, body, author } = article;
+    document.title = article.title;
 
     return (
       <React.Fragment>
         <Header />
         <div className="page-content">
           <div className="article-header" style={{ backgroundColor: '#5e9de6' }}>
-            <h2>{title}</h2>
+            <h2>{article.title}</h2>
           </div>
           <div className="article-container">
             <div className="article-content">
-              <div className="article-body">{body}</div>
-              <div className="author">{author}</div>
+              <div className="article-body">{article.body}</div>
+              <div className="author">{article.author}</div>
             </div>
           </div>
         </div>
