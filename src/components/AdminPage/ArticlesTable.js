@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Segment, Header, Table, Button } from 'semantic-ui-react';
 import { getArticles } from '../../actions/articles';
+import { getArticlesFromState } from '../../selectors/articles';
 import ArticleTableRows from './ArticleTableRows';
 import NewArticleModal from './NewArticleModal';
 
@@ -49,7 +50,7 @@ ArticlesTable.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  articles: state.articles,
+  articles: getArticlesFromState(state),
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,11 +1,22 @@
 import * as Actions from '../constants/actions';
 
-export default function articles(state = [], { type, payload }) {
+const defaultState = {
+  articles: [],
+  article: null,
+};
+
+export default function articles(state = defaultState, { type, payload }) {
   switch (type) {
-    case Actions.REQUESTED_ARTICLES:
-      return state;
     case Actions.RECIEVED_ARTICLES:
-      return payload;
+      return {
+        ...state,
+        articles: payload,
+      };
+    case Actions.RECIEVED_ARTICLE:
+      return {
+        ...state,
+        article: payload,
+      };
     default:
       return state;
   }

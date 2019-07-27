@@ -3,7 +3,7 @@ import Header from '../HomePage/Header';
 import Footer from '../HomePage/Footer';
 import ArticlesLayout from './ArticlesLayout';
 
-export default function App() {
+export default function ArticlesPage() {
   return (
     <React.Fragment>
       <Header />

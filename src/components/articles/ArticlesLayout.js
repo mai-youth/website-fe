@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card, Icon } from 'semantic-ui-react';
 import { getArticles } from '../../actions/articles';
+import { getArticlesFromState } from '../../selectors/articles';
 import logo from '../../assets/placeholder.jpg';
 
 class ArticlesLayout extends PureComponent {
@@ -15,7 +16,7 @@ class ArticlesLayout extends PureComponent {
     const { articles } = this.props;
 
     return (
-      <div className="articles-container">
+      <div className="page-content articles-container">
         <Card.Group itemsPerRow={3} centered doubling>
           {articles.map(({ id, title, body, author }) => (
             <Card
@@ -40,17 +41,13 @@ class ArticlesLayout extends PureComponent {
   }
 }
 
-ArticlesLayout.defaultProps = {
-  articles: [],
-};
-
 ArticlesLayout.propTypes = {
-  articles: PropTypes.array,
+  articles: PropTypes.array.isRequired,
   getArticles: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  articles: state.articles,
+  articles: getArticlesFromState(state),
 });
 
 const mapDispatchToProps = dispatch => ({

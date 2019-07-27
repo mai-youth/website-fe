@@ -4,6 +4,10 @@ export function getArticles() {
   return fetch(`${API_BASE}/articles`);
 }
 
+export function getArticle(id) {
+  return fetch(`${API_BASE}/articles/article/${id}`);
+}
+
 export function addArticle(articleDetails) {
   return fetch(`${API_BASE}/articles/article`, {
     method: 'PUT',
