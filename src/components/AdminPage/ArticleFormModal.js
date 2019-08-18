@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Modal, TextArea } from 'semantic-ui-react';
 
-class NewArticleModal extends PureComponent {
+class ArticleFormModal extends PureComponent {
   constructor(props) {
     super(props);
-    this.addArticle = this.addArticle.bind(this);
+    this.submit = this.submit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.state = {
@@ -33,7 +33,7 @@ class NewArticleModal extends PureComponent {
     this.setState({ modalOpen: !modalOpen });
   }
 
-  addArticle(e) {
+  submit(e) {
     const { form } = this.state;
     const { onSubmit } = this.props;
     e.preventDefault();
@@ -54,7 +54,7 @@ class NewArticleModal extends PureComponent {
       >
         <Modal.Header>{modalTitle}</Modal.Header>
         <Modal.Content>
-          <Form onSubmit={this.addArticle}>
+          <Form onSubmit={this.submit}>
             <Form.Group widths="equal">
               <Form.Input
                 fluid
@@ -88,12 +88,12 @@ class NewArticleModal extends PureComponent {
   }
 }
 
-NewArticleModal.defaultProps = {
+ArticleFormModal.defaultProps = {
   modalTitle: 'New Article',
   defaultValues: {},
 };
 
-NewArticleModal.propTypes = {
+ArticleFormModal.propTypes = {
   trigger: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   modalTitle: PropTypes.string,
@@ -104,4 +104,4 @@ NewArticleModal.propTypes = {
   }),
 };
 
-export default NewArticleModal;
+export default ArticleFormModal;

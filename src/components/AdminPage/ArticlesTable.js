@@ -5,7 +5,7 @@ import { Segment, Header, Table, Button } from 'semantic-ui-react';
 import { getArticlesFromState } from '../../selectors/articles';
 import { getArticles, addArticle } from '../../actions/articles';
 import ArticleTableRows from './ArticleTableRows';
-import NewArticleModal from './NewArticleModal';
+import ArticleFormModal from './ArticleFormModal';
 
 class ArticlesTable extends PureComponent {
   componentDidMount() {
@@ -22,7 +22,7 @@ class ArticlesTable extends PureComponent {
         <Header className="ArticlesHeader">
           Articles
         </Header>
-        <NewArticleModal
+        <ArticleFormModal
           onSubmit={addArticle}
           trigger={<Button className="NewArticleButton" fixed="right">New Article</Button>}
         />
