@@ -12,7 +12,7 @@ export function addArticle(articleDetails) {
   });
 }
 
-export function deleteArticle(articleID){
+export function deleteArticle(articleID) {
   return fetch(`${API_BASE}/articles/article`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
