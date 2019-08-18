@@ -3,7 +3,7 @@ import { Image } from 'semantic-ui-react';
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
-import screenImg from '../../Assets/prayer.jpg';
+import screenImg from '../../assets/prayer.jpg';
 
 export default function App() {
   return (
