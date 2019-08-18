@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Card, Icon } from 'semantic-ui-react';
 import { getArticles } from '../../actions/articles';
-import logo from '../../assets/placeholder.jpg';
+import logo from '../../Assets/placeholder.jpg';
 
 class ArticlesLayout extends PureComponent {
   componentDidMount() {
