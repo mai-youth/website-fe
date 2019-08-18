@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Segment, Header, Table, Button } from 'semantic-ui-react';
+import { getArticlesFromState } from '../../selectors/articles';
 import { getArticles, addArticle } from '../../actions/articles';
 import ArticleTableRows from './ArticleTableRows';
 import ArticleFormModal from './ArticleFormModal';
@@ -54,7 +55,7 @@ ArticlesTable.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  articles: state.articles,
+  articles: getArticlesFromState(state),
 });
 
 const mapDispatchToProps = dispatch => ({
