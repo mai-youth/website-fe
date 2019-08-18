@@ -25,3 +25,14 @@ export function addArticle(articleDetails) {
     }
   };
 }
+
+export function deleteArticle(articleID) {
+  return async (dispatch) => {
+    const response = await ArticlesApi.deleteArticle(articleID);
+    if (response.status === 200) {
+      dispatch({ type: Actions.DELETED_ARTICLE });
+    } else {
+      dispatch({ type: Actions.ERROR_ADDING_ARTICLE });
+    }
+  };
+}

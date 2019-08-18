@@ -11,3 +11,11 @@ export function addArticle(articleDetails) {
     body: JSON.stringify(articleDetails),
   });
 }
+
+export function deleteArticle(articleID){
+  return fetch(`${API_BASE}/articles/article`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(articleID),
+  });
+}
