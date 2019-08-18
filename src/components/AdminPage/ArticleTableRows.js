@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { Table, Button } from 'semantic-ui-react';
-import NewArticleModal from './NewArticleModal';
+import ArticleFormModal from './ArticleFormModal';
 import { editArticle } from '../../actions/articles';
 
 class ArticleTableRows extends PureComponent {
@@ -20,7 +20,7 @@ class ArticleTableRows extends PureComponent {
         <Table.Cell>{author}</Table.Cell>
         <Table.Cell>{`${body.slice(0, 25)}...`}</Table.Cell>
         <Table.Cell>
-          <NewArticleModal
+          <ArticleFormModal
             onSubmit={updated => editArticle({ id, title, body, author }, updated)}
             modalTitle="Edit Article"
             defaultValues={{ title, body, author }}
