@@ -6,7 +6,7 @@ export default function Content({ title, body, color, borderless }) {
   const classes = classNames('content-container', { border: !borderless });
 
   return (
-    <div className={classes} style={{ 'background-color': color }}>
+    <div className={classes} style={{ backgroundColor: color }}>
       <h1>{title}</h1>
       <p>{body}</p>
     </div>

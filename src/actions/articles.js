@@ -25,3 +25,24 @@ export function addArticle(articleDetails) {
     }
   };
 }
+
+export function editArticle(article, updates) {
+  const updatedField = (newVal, oldVal) => (
+    newVal !== null && newVal !== oldVal ? newVal : undefined
+  );
+
+  return async (dispatch) => {
+    const updatedFields = {
+      newTitle: updatedField(updates.title, article.title),
+      newBody: updatedField(updates.body, article.body),
+      newAuthor: updatedField(updates.author, article.author),
+    };
+    const response = await ArticlesApi.editArticle(article.id, updatedFields);
+
+    if (response.status === 200) {
+      dispatch({ type: Actions.EDITED_ARTICLE });
+    } else {
+      dispatch({ type: Actions.ERROR_EDITING_ARTICLE });
+    }
+  };
+}

@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Form, Modal, TextArea } from 'semantic-ui-react';
-import { addArticle } from '../../actions/articles';
 
 class NewArticleModal extends PureComponent {
   constructor(props) {
@@ -37,14 +35,14 @@ class NewArticleModal extends PureComponent {
 
   addArticle(e) {
     const { form } = this.state;
+    const { onSubmit } = this.props;
     e.preventDefault();
-    // eslint-disable-next-line react/destructuring-assignment
-    this.props.addArticle(form);
+    onSubmit(form);
     this.toggleModal();
   }
 
   render() {
-    const { trigger } = this.props;
+    const { trigger, modalTitle, defaultValues } = this.props;
     const { modalOpen } = this.state;
 
     return (
@@ -54,7 +52,7 @@ class NewArticleModal extends PureComponent {
         trigger={React.cloneElement(trigger, { onClick: this.toggleModal })}
         onClose={this.toggleModal}
       >
-        <Modal.Header>New Article</Modal.Header>
+        <Modal.Header>{modalTitle}</Modal.Header>
         <Modal.Content>
           <Form onSubmit={this.addArticle}>
             <Form.Group widths="equal">
@@ -62,6 +60,7 @@ class NewArticleModal extends PureComponent {
                 fluid
                 label="Title"
                 placeholder="Article Title"
+                defaultValue={defaultValues.title}
                 onChange={e => this.handleFormChange(e, 'title')}
                 required
               />
@@ -69,6 +68,7 @@ class NewArticleModal extends PureComponent {
                 fluid
                 label="Author"
                 placeholder="MAI Youth Team"
+                defaultValue={defaultValues.author}
                 onChange={e => this.handleFormChange(e, 'author')}
               />
             </Form.Group>
@@ -76,6 +76,7 @@ class NewArticleModal extends PureComponent {
               control={TextArea}
               label="Article Body"
               placeholder="Article goes here..."
+              defaultValue={defaultValues.body}
               onChange={e => this.handleFormChange(e, 'body')}
               required
             />
@@ -87,13 +88,20 @@ class NewArticleModal extends PureComponent {
   }
 }
 
-NewArticleModal.propTypes = {
-  addArticle: PropTypes.func.isRequired,
-  trigger: PropTypes.object.isRequired,
+NewArticleModal.defaultProps = {
+  modalTitle: 'New Article',
+  defaultValues: {},
 };
 
-const mapDispatchToProps = dispatch => ({
-  addArticle: article => dispatch(addArticle(article)),
-});
+NewArticleModal.propTypes = {
+  trigger: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  modalTitle: PropTypes.string,
+  defaultValues: PropTypes.shape({
+    author: PropTypes.string,
+    body: PropTypes.string,
+    title: PropTypes.string,
+  }),
+};
 
-export default connect(null, mapDispatchToProps)(NewArticleModal);
+export default NewArticleModal;
