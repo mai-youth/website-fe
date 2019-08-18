@@ -3,7 +3,7 @@ import TopMenu from './TopMenu';
 import ArticlesTable from './ArticlesTable';
 import SideNavBar from './SideNavBar';
 
-function Layout() {
+function AdminPage() {
   return (
     <div className="Grid">
       <div className="TopMenu">
@@ -19,4 +19,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default AdminPage;
