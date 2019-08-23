@@ -13,9 +13,7 @@ export function addArticle(articleDetails) {
 }
 
 export function deleteArticle(articleID) {
-  return fetch(`${API_BASE}/articles/article`, {
+  return fetch(`${API_BASE}/articles/article/${articleID}`, {
     method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(articleID),
   });
 }
