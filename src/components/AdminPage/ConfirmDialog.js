@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { Button, Confirm } from 'semantic-ui-react';
+import { deleteArticle } from '../../actions/articles';
 
 class ConfirmDialog extends Component {
   constructor(props) {
@@ -12,7 +14,7 @@ class ConfirmDialog extends Component {
 
   deleteArticle() {
     const { id } = this.props;
-    this.deleteArticle(id);
+    this.props.deleteArticle(id);
     this.toggleDialog();
   }
 
@@ -43,6 +45,11 @@ class ConfirmDialog extends Component {
 
 ConfirmDialog.propTypes = {
   id: PropTypes.number.isRequired,
+  deleteArticle: PropTypes.func.isRequired,
 };
 
-export default ConfirmDialog;
+const mapDispatchToProps = dispatch => ({
+  deleteArticle: id => dispatch(deleteArticle(id)),
+});
+
+export default connect(null, mapDispatchToProps)(ConfirmDialog);
