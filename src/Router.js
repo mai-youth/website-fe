@@ -5,6 +5,7 @@ import ArticlesPage from './components/Articles/ArticlesPage';
 import ArticleView from './components/Articles/ArticleView';
 import AdminPage from './components/AdminPage/AdminPage';
 import ContactPage from './components/ContactPage/ContactPage';
+import ErrorMessage from './components/ErrorMessage';
 
 export default function Router() {
   return (
@@ -15,7 +16,7 @@ export default function Router() {
         <Route exact path="/contact" component={ContactPage} />
         <Route path="/articles/:id" component={ArticleView} />
         <Route path="/articles" component={ArticlesPage} />
-        <Route path="/" component={App} />
+        <Route path="/" component={<ErrorMessage errorCode={404} />} />
       </Switch>
     </BrowserRouter>
   );
