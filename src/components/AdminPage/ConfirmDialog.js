@@ -24,7 +24,6 @@ class ConfirmDialog extends Component {
   }
 
   render() {
-    const { isOpen } = this.state;
     return (
       <div>
         <Button
@@ -34,9 +33,9 @@ class ConfirmDialog extends Component {
           icon="delete"
         />
         <Confirm
-          open={isOpen}
           onCancel={this.toggleDialog}
           onConfirm={this.deleteArticle}
+          trigger={<Button />}
         />
       </div>
     );

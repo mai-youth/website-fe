@@ -32,7 +32,7 @@ export function deleteArticle(articleID) {
     if (response.status === 200) {
       dispatch({ type: Actions.DELETED_ARTICLE });
     } else {
-      dispatch({ type: Actions.ERROR_ADDING_ARTICLE });
+      dispatch({ type: Actions.ERROR_DELETING_ARTICLE });
     }
   };
 }
