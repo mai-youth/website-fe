@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Card, Icon } from 'semantic-ui-react';
 import { getArticles } from '../../actions/articles';
+import { getArticlesFromState } from '../../selectors/articles';
 import logo from '../../assets/placeholder.jpg';
 
 class ArticlesLayout extends PureComponent {
@@ -50,7 +51,7 @@ ArticlesLayout.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  articles: state.articles,
+  articles: getArticlesFromState(state),
 });
 
 const mapDispatchToProps = dispatch => ({

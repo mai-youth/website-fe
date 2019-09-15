@@ -19,4 +19,5 @@ rules: {
   react/forbid-prop-types: off,
   react/require-default-props: warn,
   react/destructuring-assignment: warn,
+  no-shadow: warn,
 }

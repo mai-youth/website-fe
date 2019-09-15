@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Dimmer, Loader } from 'semantic-ui-react';
-import Header from '../HomePage/Header';
-import Footer from '../HomePage/Footer';
+import Header from '../homepage/Header';
+import Footer from '../homepage/Footer';
 import { getArticle } from '../../actions/articles';
 import { getArticleFromState } from '../../selectors/articles';
 

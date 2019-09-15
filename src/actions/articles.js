@@ -60,3 +60,17 @@ export function editArticle(article, updates) {
     }
   };
 }
+
+export function deleteArticle(articleID) {
+  return async (dispatch) => {
+    const response = await ArticlesApi.deleteArticle(articleID);
+    if (response.status === 200) {
+      dispatch({
+        type: Actions.DELETED_ARTICLE,
+        payload: articleID,
+      });
+    } else {
+      dispatch({ type: Actions.ERROR_DELETING_ARTICLE });
+    }
+  };
+}

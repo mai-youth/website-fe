@@ -23,3 +23,9 @@ export function editArticle(id, editDetails) {
     body: JSON.stringify(editDetails),
   });
 }
+
+export function deleteArticle(articleID) {
+  return fetch(`${API_BASE}/articles/article/${articleID}`, {
+    method: 'DELETE',
+  });
+}
