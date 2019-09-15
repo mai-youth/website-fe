@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Segment, Header, Table, Button } from 'semantic-ui-react';
-import { getArticles } from '../../actions/articles';
+import { getArticlesFromState } from '../../selectors/articles';
+import { getArticles, addArticle } from '../../actions/articles';
 import ArticleTableRows from './ArticleTableRows';
-import NewArticleModal from './NewArticleModal';
+import ArticleFormModal from './ArticleFormModal';
 
 class ArticlesTable extends PureComponent {
   componentDidMount() {
@@ -13,14 +14,18 @@ class ArticlesTable extends PureComponent {
   }
 
   render() {
-    const { articles } = this.props;
+    // eslint-disable-next-line no-shadow
+    const { articles, addArticle } = this.props;
 
     return (
       <Segment position="center">
         <Header className="ArticlesHeader">
                     Articles
         </Header>
-        <NewArticleModal trigger={<Button className="NewArticleButton" fixed="right">New Article</Button>} />
+        <ArticleFormModal
+          onSubmit={addArticle}
+          trigger={<Button className="NewArticleButton" fixed="right">New Article</Button>}
+        />
         <Table compact celled>
           <Table.Header fullWidth>
             <Table.Row>
@@ -46,14 +51,16 @@ ArticlesTable.defaultProps = {
 ArticlesTable.propTypes = {
   articles: PropTypes.array,
   getArticles: PropTypes.func.isRequired,
+  addArticle: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  articles: state.articles,
+  articles: getArticlesFromState(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   getArticles: () => dispatch(getArticles()),
+  addArticle: article => dispatch(addArticle(article)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticlesTable);

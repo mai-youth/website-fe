@@ -13,15 +13,50 @@ export function getArticles() {
   };
 }
 
+export function getArticle(id) {
+  return async (dispatch) => {
+    dispatch({ type: Actions.REQUESTED_ARTICLE });
+    const response = await ArticlesApi.getArticle(id);
+    if (response.status === 200) {
+      const json = await response.json();
+      dispatch({
+        type: Actions.RECIEVED_ARTICLE,
+        payload: json,
+      });
+    } else {
+      dispatch({ type: Actions.ERROR_GETTING_ARTICLE });
+    }
+  };
+}
+
 export function addArticle(articleDetails) {
   return async (dispatch) => {
     const response = await ArticlesApi.addArticle(articleDetails);
-    const json = await response.json();
-
-    if (json.status === 200) {
+    if (response.status === 200) {
       dispatch({ type: Actions.ADDED_ARTICLE });
     } else {
       dispatch({ type: Actions.ERROR_ADDING_ARTICLE });
+    }
+  };
+}
+
+export function editArticle(article, updates) {
+  const updatedField = (newVal, oldVal) => (
+    newVal !== null && newVal !== oldVal ? newVal : undefined
+  );
+
+  return async (dispatch) => {
+    const updatedFields = {
+      newTitle: updatedField(updates.title, article.title),
+      newBody: updatedField(updates.body, article.body),
+      newAuthor: updatedField(updates.author, article.author),
+    };
+    const response = await ArticlesApi.editArticle(article.id, updatedFields);
+
+    if (response.status === 200) {
+      dispatch({ type: Actions.EDITED_ARTICLE });
+    } else {
+      dispatch({ type: Actions.ERROR_EDITING_ARTICLE });
     }
   };
 }

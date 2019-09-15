@@ -1,44 +1,52 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { Table, Button } from 'semantic-ui-react';
+import ArticleFormModal from './ArticleFormModal';
 import ConfirmDialog from './ConfirmDialog';
-import { deleteArticle } from '../../actions/articles';
+import { editArticle, deleteArticle } from '../../actions/articles';
 
-function ArticleTableRows({ articles, deleteArticle }) {
-  if (!articles || articles.length === 0) {
-    return null;
-  }
+class ArticleTableRows extends PureComponent {
+  render() {
+    const { articles, editArticle, deleteArticle } = this.props;
 
-  return articles.map(({ id, title, body, author }) => (
-    <Table.Row key={id}>
-      <Table.Cell>{title}</Table.Cell>
-      <Table.Cell>{author}</Table.Cell>
-      <Table.Cell>{`${body.slice(0, 25)}...`}</Table.Cell>
-      <Table.Cell>
-        <Button size="mini" icon="pencil" />
-        <ConfirmDialog onConfirm={() => deleteArticle(id)}>
-          <Button
-            color="red"
-            size="mini"
-            icon="delete"
+    if (!articles || articles.length === 0) {
+      return null;
+    }
+
+    return articles.map(({ id, title, body, author }) => (
+      <Table.Row key={id}>
+        <Table.Cell>{title}</Table.Cell>
+        <Table.Cell>{author}</Table.Cell>
+        <Table.Cell>{`${body.slice(0, 25)}...`}</Table.Cell>
+        <Table.Cell>
+          <ArticleFormModal
+            onSubmit={updated => editArticle({ id, title, body, author }, updated)}
+            modalTitle="Edit Article"
+            defaultValues={{ title, body, author }}
+            trigger={<Button size="mini" icon="pencil" />}
           />
-        </ConfirmDialog>
-      </Table.Cell>
-    </Table.Row>
-  ));
+          <ConfirmDialog onConfirm={() => deleteArticle(id)}>
+            <Button
+              color="red"
+              size="mini"
+              icon="delete"
+            />
+          </ConfirmDialog>
+        </Table.Cell>
+      </Table.Row>
+    ));
+  }
 }
 
-ArticleTableRows.defaultProps = {
-  articles: [],
-};
-
 ArticleTableRows.propTypes = {
-  articles: PropTypes.array,
+  articles: PropTypes.array.isRequired,
+  editArticle: PropTypes.func.isRequired,
   deleteArticle: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
+  editArticle: (old, updated) => dispatch(editArticle(old, updated)),
   deleteArticle: id => dispatch(deleteArticle(id)),
 });
 

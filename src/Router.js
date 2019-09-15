@@ -1,15 +1,21 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './components/homepage/App';
-import AdminLayout from './components/AdminPage/AdminLayout';
+import ArticlesPage from './components/Articles/ArticlesPage';
+import ArticleView from './components/Articles/ArticleView';
+import AdminPage from './components/AdminPage/AdminPage';
+import ContactPage from './components/ContactPage/ContactPage';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Redirect exact from="/" to="/app" />
-        <Route path="/app" component={App} />
-        <Route path="/admin" component={AdminLayout} />
+        <Route exact path="/" component={App} />
+        <Route exact path="/admin" component={AdminPage} />
+        <Route exact path="/contact" component={ContactPage} />
+        <Route path="/articles/:id" component={ArticleView} />
+        <Route path="/articles" component={ArticlesPage} />
+        <Route path="/" component={App} />
       </Switch>
     </BrowserRouter>
   );
