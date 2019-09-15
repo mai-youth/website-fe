@@ -1,8 +1,11 @@
 import React from 'react';
-import { Table, Button, Icon } from 'semantic-ui-react';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { Table, Button } from 'semantic-ui-react';
 import ConfirmDialog from './ConfirmDialog';
+import { deleteArticle } from '../../actions/articles';
 
-export default function ArticleTableRows({ articles }) {
+function ArticleTableRows({ articles, deleteArticle }) {
   if (!articles || articles.length === 0) {
     return null;
   }
@@ -13,11 +16,30 @@ export default function ArticleTableRows({ articles }) {
       <Table.Cell>{author}</Table.Cell>
       <Table.Cell>{`${body.slice(0, 25)}...`}</Table.Cell>
       <Table.Cell>
-        <Button size="mini" icon>
-          <Icon name="pencil" />
-        </Button>
-        <ConfirmDialog id={id} />
+        <Button size="mini" icon="pencil" />
+        <ConfirmDialog onConfirm={() => deleteArticle(id)}>
+          <Button
+            color="red"
+            size="mini"
+            icon="delete"
+          />
+        </ConfirmDialog>
       </Table.Cell>
     </Table.Row>
   ));
 }
+
+ArticleTableRows.defaultProps = {
+  articles: [],
+};
+
+ArticleTableRows.propTypes = {
+  articles: PropTypes.array,
+  deleteArticle: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  deleteArticle: id => dispatch(deleteArticle(id)),
+});
+
+export default connect(null, mapDispatchToProps)(ArticleTableRows);

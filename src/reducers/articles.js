@@ -6,6 +6,8 @@ export default function articles(state = [], { type, payload }) {
       return state;
     case Actions.RECIEVED_ARTICLES:
       return payload;
+    case Actions.DELETED_ARTICLE:
+      return state.filter(({ id }) => id !== payload);
     default:
       return state;
   }

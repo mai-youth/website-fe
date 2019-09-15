@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { PureComponent } from 'react';
 import { PropTypes } from 'prop-types';
-import { Button, Confirm } from 'semantic-ui-react';
-import { deleteArticle } from '../../actions/articles';
+import { Confirm } from 'semantic-ui-react';
 
-class ConfirmDialog extends Component {
+class ConfirmDialog extends PureComponent {
   constructor(props) {
     super(props);
     this.toggleDialog = this.toggleDialog.bind(this);
-    this.deleteArticle = this.deleteArticle.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
     this.state = { isOpen: false };
   }
 
-  deleteArticle() {
-    const { id } = this.props;
-    this.props.deleteArticle(id);
+  onConfirm() {
+    const { onConfirm } = this.props;
+    onConfirm();
     this.toggleDialog();
   }
 
@@ -24,31 +22,24 @@ class ConfirmDialog extends Component {
   }
 
   render() {
+    const { children } = this.props;
+    const { isOpen } = this.state;
     return (
-      <div>
-        <Button
-          onClick={this.toggleDialog}
-          color="red"
-          size="mini"
-          icon="delete"
-        />
+      <>
+        {React.cloneElement(children, { onClick: this.toggleDialog })}
         <Confirm
+          open={isOpen}
           onCancel={this.toggleDialog}
-          onConfirm={this.deleteArticle}
-          trigger={<Button />}
+          onConfirm={this.onConfirm}
         />
-      </div>
+      </>
     );
   }
 }
 
 ConfirmDialog.propTypes = {
-  id: PropTypes.number.isRequired,
-  deleteArticle: PropTypes.func.isRequired,
+  children: PropTypes.object.isRequired,
+  onConfirm: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-  deleteArticle: id => dispatch(deleteArticle(id)),
-});
-
-export default connect(null, mapDispatchToProps)(ConfirmDialog);
+export default ConfirmDialog;
