@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../homepage/Header';
-import Footer from '../homepage/Footer';
 import ArticlesLayout from './ArticlesLayout';
+import Footer from '../homepage/Footer';
 
 export default function App() {
   return (
