@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../homepage/Header';
-import Footer from '../homepage/Footer';
+import Header from '../home/Header';
+import Footer from '../home/Footer';
 import ContactForm from './ContactForm';
 
 export default function MainPage() {
