@@ -5,6 +5,7 @@ import { Table, Button } from 'semantic-ui-react';
 import ArticleFormModal from './ArticleFormModal';
 import ConfirmDialog from './ConfirmDialog';
 import { editArticle, deleteArticle } from '../../actions/articles';
+import { stripTags } from '../../utils/stringUtils';
 
 class ArticleTableRows extends PureComponent {
   render() {
@@ -18,7 +19,7 @@ class ArticleTableRows extends PureComponent {
       <Table.Row key={id}>
         <Table.Cell>{title}</Table.Cell>
         <Table.Cell>{author}</Table.Cell>
-        <Table.Cell>{`${body.slice(0, 25)}...`}</Table.Cell>
+        <Table.Cell>{`${stripTags(body).slice(0, 25)}...`}</Table.Cell>
         <Table.Cell>
           <ArticleFormModal
             onSubmit={updated => editArticle({ id, title, body, author }, updated)}

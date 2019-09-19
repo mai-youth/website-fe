@@ -36,7 +36,7 @@ class ArticleView extends PureComponent {
           </div>
           <div className="article-container">
             <div className="article-content">
-              <div className="article-body">{article.body}</div>
+              <div className="article-body" dangerouslySetInnerHTML={{ __html: article.body }} />
               <div className="author">{article.author}</div>
             </div>
           </div>
