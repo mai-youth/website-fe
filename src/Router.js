@@ -5,6 +5,7 @@ import ArticlesPage from './components/articles/ArticlesPage';
 import ArticleView from './components/articles/ArticleView';
 import AdminPage from './components/admin/AdminPage';
 import ContactPage from './components/contact/ContactPage';
+import GalleryPage from './components/gallery/GalleryPage';
 
 export default function Router() {
   return (
@@ -15,6 +16,7 @@ export default function Router() {
         <Route exact path="/contact" component={ContactPage} />
         <Route path="/articles/:id" component={ArticleView} />
         <Route path="/articles" component={ArticlesPage} />
+        <Route path="/gallery" component={GalleryPage} />
         <Route path="/" component={App} />
       </Switch>
     </BrowserRouter>
