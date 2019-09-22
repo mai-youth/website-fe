@@ -1,10 +1,10 @@
 import React from 'react';
 import Gallery from 'react-grid-gallery';
-import { imageLinks } from '../../constants/gallery';
+import { imageKeys } from '../../constants/gallery';
 
-const getImages = () => imageLinks.map(link => ({
-  src: `${link}.jpg`,
-  thumbnail: `${link}.jpg`,
+const getImages = () => imageKeys.map(key => ({
+  src: `https://imgur.com/${key}.jpg`,
+  thumbnail: `https://imgur.com/${key}.jpg`,
 }));
 
 export default function GalleryGrid() {
