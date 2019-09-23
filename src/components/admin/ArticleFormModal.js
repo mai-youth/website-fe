@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Modal, TextArea } from 'semantic-ui-react';
+import { Button, Form, Modal } from 'semantic-ui-react';
+import RichTextEditor from './RichTextEditor';
 
 class ArticleFormModal extends PureComponent {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
+    this.handleBodyChange = this.handleBodyChange.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.state = {
       form: {
@@ -18,12 +20,22 @@ class ArticleFormModal extends PureComponent {
     };
   }
 
-  handleFormChange(event, field) {
+  handleFormChange(value, field) {
     const { form } = this.state;
     this.setState({
       form: {
         ...form,
-        [field]: event.target.value,
+        [field]: value,
+      },
+    });
+  }
+
+  handleBodyChange(richText) {
+    const { form } = this.state;
+    this.setState({
+      form: {
+        ...form,
+        body: richText,
       },
     });
   }
@@ -61,7 +73,7 @@ class ArticleFormModal extends PureComponent {
                 label="Title"
                 placeholder="Article Title"
                 defaultValue={defaultValues.title}
-                onChange={e => this.handleFormChange(e, 'title')}
+                onChange={e => this.handleFormChange(e.target.value, 'title')}
                 required
               />
               <Form.Input
@@ -69,16 +81,14 @@ class ArticleFormModal extends PureComponent {
                 label="Author"
                 placeholder="MAI Youth Team"
                 defaultValue={defaultValues.author}
-                onChange={e => this.handleFormChange(e, 'author')}
+                onChange={e => this.handleFormChange(e.target.value, 'author')}
               />
             </Form.Group>
-            <Form.Field
-              control={TextArea}
-              label="Article Body"
-              placeholder="Article goes here..."
+            <div className="label">Article Body</div>
+            <RichTextEditor
+              onChange={value => this.handleBodyChange(value, 'body')}
               defaultValue={defaultValues.body}
-              onChange={e => this.handleFormChange(e, 'body')}
-              required
+              placeholder="Article goes here..."
             />
             <Button positive type="submit">Submit</Button>
           </Form>

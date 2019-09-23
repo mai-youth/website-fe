@@ -5,6 +5,7 @@ import { Card, Icon } from 'semantic-ui-react';
 import { getArticles } from '../../actions/articles';
 import { getArticlesFromState } from '../../selectors/articles';
 import logo from '../../assets/placeholder.jpg';
+import { stripTags } from '../../utils/stringUtils';
 
 class ArticlesLayout extends PureComponent {
   componentDidMount() {
@@ -24,7 +25,7 @@ class ArticlesLayout extends PureComponent {
               image={logo}
               header={title}
               meta="July 2019"
-              description={`${body.slice(0, 50)}...`}
+              description={`${stripTags(body).slice(0, 50)}...`}
               extra={(
                 <span>
                   <Icon name="user" />
