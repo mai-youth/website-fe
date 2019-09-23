@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import { decode } from 'jsonwebtoken';
+import { toast } from 'react-toastify';
 import * as Actions from '../constants/actions';
 import * as AuthApi from '../api/auth';
 import { TOKEN_KEY } from '../constants/auth';
@@ -25,6 +26,14 @@ export function authenticate(passPhrase) {
 export function invalidateAuth(dispatch) {
   dispatch({ type: Actions.AUTH_INVALID });
   Cookies.remove(TOKEN_KEY);
+  toast.error('Session expired. Please refresh the page and try again.', {
+    position: 'top-right',
+    autoClose: false,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
 }
 
 export function restoreSession() {

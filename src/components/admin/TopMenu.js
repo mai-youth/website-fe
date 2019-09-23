@@ -2,7 +2,6 @@ import React from 'react';
 import { Menu } from 'semantic-ui-react';
 import Logo from '../Logo';
 
-
 function TopMenu() {
   return (
     <Menu className="TopMenu" position="top" borderless>
