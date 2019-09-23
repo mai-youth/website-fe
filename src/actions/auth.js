@@ -2,8 +2,7 @@ import Cookies from 'js-cookie';
 import { decode } from 'jsonwebtoken';
 import * as Actions from '../constants/actions';
 import * as AuthApi from '../api/auth';
-
-const TOKEN_KEY = 'TOKEN';
+import { TOKEN_KEY } from '../constants/auth';
 
 export function authenticate(passPhrase) {
   return async (dispatch) => {
@@ -23,6 +22,11 @@ export function authenticate(passPhrase) {
   };
 }
 
+export function invalidateAuth(dispatch) {
+  dispatch({ type: Actions.AUTH_INVALID });
+  Cookies.remove(TOKEN_KEY);
+}
+
 export function restoreSession() {
   return (dispatch) => {
     const token = Cookies.get(TOKEN_KEY);
@@ -39,7 +43,7 @@ export function restoreSession() {
         const { exp } = decode(token);
         if (Date.now() >= exp * 1000) {
           // token expired, remove cookie
-          Cookies.remove(TOKEN_KEY);
+          invalidateAuth(dispatch);
           return;
         }
 

@@ -63,8 +63,9 @@ AuthPage.defaultProps = {
 
 AuthPage.propTypes = {
   status: PropTypes.string,
-  authenticate: PropTypes.func.isRequired,
   location: PropTypes.object,
+  authenticate: PropTypes.func.isRequired,
+  restoreSession: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
