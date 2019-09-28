@@ -8,7 +8,7 @@ export default function Content({ title, body, color, borderless }) {
   return (
     <div className={classes} style={{ backgroundColor: color }}>
       <h1>{title}</h1>
-      <p>{body}</p>
+      <p dangerouslySetInnerHTML={{ __html: body }} />
     </div>
   );
 }
