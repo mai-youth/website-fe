@@ -28,7 +28,7 @@ export function invalidateAuth(dispatch) {
   Cookies.remove(TOKEN_KEY);
   toast.error('Session expired. Please refresh the page and try again.', {
     position: 'top-right',
-    autoClose: false,
+    autoClose: true,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
