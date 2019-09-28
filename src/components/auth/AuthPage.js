@@ -30,7 +30,7 @@ class AuthPage extends PureComponent {
       this.setState({ isLoading: false });
       toast.error('Failed to authenticate. Are you sure the passphrase you entered is correct?', {
         position: 'top-right',
-        autoClose: true,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
