@@ -43,3 +43,7 @@ export function deleteArticle(articleID) {
     },
   });
 }
+
+export function viewArticle(articleID) {
+  return fetch(`${API_BASE}/articles/article/${articleID}/seen`, { method: 'POST' });
+}

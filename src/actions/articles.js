@@ -90,3 +90,10 @@ export function deleteArticle(articleID) {
     }
   };
 }
+
+export function viewArticle(articleId) {
+  return (dispatch) => {
+    dispatch({ type: Actions.VIEWED_ARTICLE });
+    ArticlesApi.viewArticle(articleId);
+  };
+}
