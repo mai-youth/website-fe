@@ -20,7 +20,7 @@ class ArticlesTable extends PureComponent {
     return (
       <Segment position="center">
         <Header className="ArticlesHeader">
-          Articles
+                    Articles
         </Header>
         <ArticleFormModal
           onSubmit={addArticle}

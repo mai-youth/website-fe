@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../HomePage/Header';
+import Header from '../home/Header';
+import Footer from '../home/Footer';
 import ContactForm from './ContactForm';
-import Footer from '../HomePage/Footer';
 
 export default function MainPage() {
   return (

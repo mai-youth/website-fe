@@ -1,17 +1,19 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Dimmer, Loader } from 'semantic-ui-react';
-import Header from '../HomePage/Header';
-import Footer from '../HomePage/Footer';
-import { getArticle } from '../../actions/articles';
+import Header from '../home/Header';
+import Footer from '../home/Footer';
+import { getArticle, viewArticle } from '../../actions/articles';
 import { getArticleFromState } from '../../selectors/articles';
 
 class ArticleView extends PureComponent {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    // eslint-disable-next-line react/destructuring-assignment
     this.props.getArticle(id);
+    // Set the article as seen in 3 seconds. This is to avoid some of the accidental clicks
+    setTimeout(() => this.props.viewArticle(id), 3000);
   }
 
   render() {
@@ -36,7 +38,7 @@ class ArticleView extends PureComponent {
           </div>
           <div className="article-container">
             <div className="article-content">
-              <div className="article-body">{article.body}</div>
+              <div className="article-body" dangerouslySetInnerHTML={{ __html: article.body }} />
               <div className="author">{article.author}</div>
             </div>
           </div>
@@ -54,6 +56,7 @@ ArticleView.defaultProps = {
 ArticleView.propTypes = {
   article: PropTypes.object,
   getArticle: PropTypes.func.isRequired,
+  viewArticle: PropTypes.func.isRequired,
   match: PropTypes.shape({ params: PropTypes.object.isRequired }).isRequired,
 };
 
@@ -63,6 +66,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getArticle: id => dispatch(getArticle(id)),
+  viewArticle: id => dispatch(viewArticle(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleView);

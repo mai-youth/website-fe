@@ -14,9 +14,11 @@ plugins:
   - react
 rules: {
   react/jsx-filename-extension: off,
+  react/no-array-index-key: off,
   object-curly-newline: off,
   import/prefer-default-export: off,
   react/forbid-prop-types: off,
   react/require-default-props: warn,
   react/destructuring-assignment: warn,
+  no-shadow: warn,
 }

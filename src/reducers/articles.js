@@ -17,6 +17,11 @@ export default function articles(state = defaultState, { type, payload }) {
         ...state,
         article: payload,
       };
+    case Actions.DELETED_ARTICLE:
+      return {
+        ...state,
+        articles: state.articles.filter(({ id }) => id !== payload),
+      };
     default:
       return state;
   }

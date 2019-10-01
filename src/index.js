@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
@@ -20,6 +22,15 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <Router />
+    <ToastContainer
+      position="top-right"
+      autoClose={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnVisibilityChange
+      draggable
+    />
   </Provider>,
   document.getElementById('root'),
 );
