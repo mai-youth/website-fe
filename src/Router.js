@@ -23,7 +23,7 @@ export default function Router() {
         <Route path="/articles/:id" component={ArticleView} />
         <Route path="/articles" component={ArticlesPage} />
         <Route path="/gallery" component={GalleryPage} />
-        <Route path="/" component={<ErrorMessage errorCode={404} />} />
+        <Route path="/" component={() => <ErrorMessage errorCode={404} />} />
       </Switch>
     </BrowserRouter>
   );
