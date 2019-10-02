@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Modal } from 'semantic-ui-react';
+import { Button, Form, Modal, Dropdown } from 'semantic-ui-react';
 import RichTextEditor from './RichTextEditor';
 
 class ArticleFormModal extends PureComponent {
@@ -15,6 +15,7 @@ class ArticleFormModal extends PureComponent {
         author: 'MAI Youth Team',
         body: null,
         title: null,
+        color: null,
       },
       modalOpen: false,
     };
@@ -83,6 +84,17 @@ class ArticleFormModal extends PureComponent {
                 defaultValue={defaultValues.author}
                 onChange={e => this.handleFormChange(e.target.value, 'author')}
               />
+              <div style={{ width: '100%' }}>
+                <label>Color</label>
+                <Dropdown
+                  fluid
+                  placeholder="Color"
+                  defaultValue={defaultValues.color}
+                  selection
+                  options={[{ key: '1', text: 'Red', Value: 123 }, { key: '2', text: 'Orange', Value: 456 }]}
+                  style={{ height: 'fit-content' }}
+                />
+              </div>
             </Form.Group>
             <div className="label">Article Body</div>
             <RichTextEditor
@@ -111,6 +123,7 @@ ArticleFormModal.propTypes = {
     author: PropTypes.string,
     body: PropTypes.string,
     title: PropTypes.string,
+    color: PropTypes.string,
   }),
 };
 
