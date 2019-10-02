@@ -7,6 +7,11 @@ import ConfirmDialog from './ConfirmDialog';
 import { editArticle, deleteArticle } from '../../actions/articles';
 import { stripTags } from '../../utils/stringUtils';
 
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+  return `${date.toDateString()} @ ${date.toTimeString().slice(0, 5)}`;
+};
+
 class ArticleTableRows extends PureComponent {
   render() {
     const { articles, editArticle, deleteArticle } = this.props;
@@ -15,11 +20,15 @@ class ArticleTableRows extends PureComponent {
       return null;
     }
 
-    return articles.map(({ id, title, body, author }) => (
+    return articles.map(({ id, title, body, author, views, likes, createdAt, updatedAt }) => (
       <Table.Row key={id}>
         <Table.Cell>{title}</Table.Cell>
         <Table.Cell>{author}</Table.Cell>
         <Table.Cell>{`${stripTags(body).slice(0, 25)}...`}</Table.Cell>
+        <Table.Cell>{views}</Table.Cell>
+        <Table.Cell>{likes}</Table.Cell>
+        <Table.Cell>{formatDate(createdAt)}</Table.Cell>
+        <Table.Cell>{formatDate(updatedAt)}</Table.Cell>
         <Table.Cell>
           <ArticleFormModal
             onSubmit={updated => editArticle({ id, title, body, author }, updated)}
