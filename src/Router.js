@@ -9,6 +9,7 @@ import ContactPage from './components/contact/ContactPage';
 import EventsPage from './components/events/EventsPage';
 import GalleryPage from './components/gallery/GalleryPage';
 import AuthPage from './components/auth/AuthPage';
+import ErrorMessage from './components/ErrorMessage';
 import { shouldShowArticles } from './constants/config';
 
 export default function Router() {
@@ -27,7 +28,7 @@ export default function Router() {
           </React.Fragment>
         )}
         <Route path="/gallery" component={GalleryPage} />
-        <Route path="/" component={App} />
+        <Route path="/" component={() => <ErrorMessage errorCode={404} />} />
       </Switch>
     </BrowserRouter>
   );
