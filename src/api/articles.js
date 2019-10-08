@@ -44,6 +44,10 @@ export function deleteArticle(articleID) {
   });
 }
 
+export function likeArticle(articleId) {
+  return fetch(`${API_BASE}/articles/article/${articleId}/liked`, { method: 'POST' });
+}
+
 export function viewArticle(articleID) {
   return fetch(`${API_BASE}/articles/article/${articleID}/seen`, { method: 'POST' });
 }
