@@ -2,11 +2,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { Dimmer, Loader, Icon } from 'semantic-ui-react';
 import Header from '../home/Header';
 import Footer from '../home/Footer';
 import { getArticle, viewArticle } from '../../actions/articles';
 import { getArticleFromState } from '../../selectors/articles';
+import { getYearMonthFromDate } from '../../utils/date';
 
 class ArticleView extends PureComponent {
   componentDidMount() {
@@ -35,6 +36,10 @@ class ArticleView extends PureComponent {
         <div className="page-content">
           <div className="article-header" style={{ backgroundColor: '#5e9de6' }}>
             <h2>{article.title}</h2>
+            <em>
+              <Icon name="calendar alternate outline" />
+              {getYearMonthFromDate(article.createdAt)}
+            </em>
           </div>
           <div className="article-container">
             <div className="article-content">

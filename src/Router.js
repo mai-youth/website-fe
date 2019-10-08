@@ -10,6 +10,7 @@ import EventsPage from './components/events/EventsPage';
 import GalleryPage from './components/gallery/GalleryPage';
 import AuthPage from './components/auth/AuthPage';
 import ErrorMessage from './components/ErrorMessage';
+import { shouldShowArticles } from './constants/config';
 
 export default function Router() {
   return (
@@ -20,8 +21,12 @@ export default function Router() {
         <Route exact path="/auth" component={AuthPage} />
         <Route exact path="/contact" component={ContactPage} />
         <Route exact path="/events" component={EventsPage} />
-        <Route path="/articles/:id" component={ArticleView} />
-        <Route path="/articles" component={ArticlesPage} />
+        {shouldShowArticles && (
+          <React.Fragment>
+            <Route path="/articles/:id" component={ArticleView} />
+            <Route path="/articles" component={ArticlesPage} />
+          </React.Fragment>
+        )}
         <Route path="/gallery" component={GalleryPage} />
         <Route path="/" component={() => <ErrorMessage errorCode={404} />} />
       </Switch>

@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'semantic-ui-css/semantic.min.css';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
+import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
-
+import { ToastContainer } from 'react-toastify';
 import rootReducer from './reducers';
 import Router from './Router';
+import 'semantic-ui-css/semantic.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './sass/index.sass';
 
 // eslint-disable-next-line no-underscore-dangle
