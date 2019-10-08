@@ -91,6 +91,14 @@ export function deleteArticle(articleID) {
   };
 }
 
+
+export function likeArticle(articleId) {
+  return (dispatch) => {
+    dispatch({ type: Actions.LIKED_ARTICLE });
+    ArticlesApi.likeArticle(articleId);
+  };
+}
+
 export function viewArticle(articleId) {
   return (dispatch) => {
     dispatch({ type: Actions.VIEWED_ARTICLE });
