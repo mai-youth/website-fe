@@ -33,7 +33,11 @@ class ArticlesTable extends PureComponent {
                 <Table.HeaderCell>Article Name</Table.HeaderCell>
                 <Table.HeaderCell>Author</Table.HeaderCell>
                 <Table.HeaderCell>Description</Table.HeaderCell>
-                <Table.HeaderCell width={2}> Actions </Table.HeaderCell>
+                <Table.HeaderCell>Views</Table.HeaderCell>
+                <Table.HeaderCell>Likes</Table.HeaderCell>
+                <Table.HeaderCell>Created On</Table.HeaderCell>
+                <Table.HeaderCell>Last Updated</Table.HeaderCell>
+                <Table.HeaderCell>Actions</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
