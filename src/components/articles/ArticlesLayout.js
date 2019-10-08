@@ -6,6 +6,7 @@ import { getArticles } from '../../actions/articles';
 import { getArticlesFromState } from '../../selectors/articles';
 import logo from '../../assets/placeholder.jpg';
 import { stripTags } from '../../utils/stringUtils';
+import { getYearMonthFromDate } from '../../utils/date';
 
 class ArticlesLayout extends PureComponent {
   componentDidMount() {
@@ -19,12 +20,12 @@ class ArticlesLayout extends PureComponent {
     return (
       <div className="articles-container">
         <Card.Group itemsPerRow={3} centered doubling>
-          {articles.map(({ id, title, body, author }) => (
+          {articles.map(({ id, title, body, author, createdAt }) => (
             <Card
               key={id}
               image={logo}
               header={title}
-              meta="July 2019"
+              meta={getYearMonthFromDate(createdAt)}
               description={`${stripTags(body).slice(0, 50)}...`}
               extra={(
                 <span>

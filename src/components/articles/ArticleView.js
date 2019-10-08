@@ -1,18 +1,21 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { Dimmer, Loader, Icon } from 'semantic-ui-react';
 import ActionItems from './actions/ActionList';
 import Header from '../home/Header';
 import Footer from '../home/Footer';
-import { getArticle, likeArticle } from '../../actions/articles';
+import { getArticle, likeArticle, viewArticle } from '../../actions/articles';
 import { getArticleFromState } from '../../selectors/articles';
+import { getYearMonthFromDate } from '../../utils/date';
 
 class ArticleView extends PureComponent {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    // eslint-disable-next-line react/destructuring-assignment
     this.props.getArticle(id);
+    // Set the article as seen in 3 seconds. This is to avoid some of the accidental clicks
+    setTimeout(() => this.props.viewArticle(id), 3000);
   }
 
   render() {
@@ -34,6 +37,10 @@ class ArticleView extends PureComponent {
         <div className="page-content">
           <div className="article-header" style={{ backgroundColor: '#5e9de6' }}>
             <h2>{article.title}</h2>
+            <em>
+              <Icon name="calendar alternate outline" />
+              {getYearMonthFromDate(article.createdAt)}
+            </em>
           </div>
           <div className="article-container">
             {/* eslint-disable-next-line react/destructuring-assignment */}
@@ -59,6 +66,7 @@ ArticleView.propTypes = {
   article: PropTypes.object,
   getArticle: PropTypes.func.isRequired,
   likeArticle: PropTypes.func.isRequired,
+  viewArticle: PropTypes.func.isRequired,
   match: PropTypes.shape({ params: PropTypes.object.isRequired }).isRequired,
 };
 
@@ -69,6 +77,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getArticle: id => dispatch(getArticle(id)),
   likeArticle: id => dispatch(likeArticle(id)),
+  viewArticle: id => dispatch(viewArticle(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleView);

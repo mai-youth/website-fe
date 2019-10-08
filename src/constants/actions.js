@@ -19,3 +19,4 @@ export const AUTH_FAILED = 'AUTH_FAILED';
 export const AUTH_INVALID = 'AUTH_INVALID';
 
 export const LIKED_ARTICLE = 'LIKED_ARTICLE';
+export const VIEWED_ARTICLE = 'VIEWED_ARTICLE';
