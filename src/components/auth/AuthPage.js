@@ -6,11 +6,13 @@ import { Dimmer, Input } from 'semantic-ui-react';
 import { authenticate, restoreSession } from '../../actions/auth';
 import { getAuthStatus } from '../../selectors/auth';
 import Status from '../../constants/status';
+import { toast } from 'react-toastify';
 
 class AuthPage extends PureComponent {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
+    this.submitIfEnter = this.submitIfEnter.bind(this);
     this.state = {
       isLoading: false,
       value: null,
@@ -20,6 +22,27 @@ class AuthPage extends PureComponent {
   componentDidMount() {
     // eslint-disable-next-line react/destructuring-assignment
     this.props.restoreSession();
+  }
+
+  componentWillReceiveProps(newProps) {
+    // In case authentication failed, show a notification
+    if (newProps.status === Status.FAILED) {
+      this.setState({ isLoading: false });
+      toast.error('Failed to authenticate. Are you sure the passphrase you entered is correct?', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
+  }
+
+  submitIfEnter(e) {
+    if (e.keyCode === 13) {
+      this.submit();
+    }
   }
 
   submit() {
@@ -48,8 +71,11 @@ class AuthPage extends PureComponent {
             loading: isLoading,
             onClick: this.submit,
           }}
+          type="password"
           placeholder="Pass Phrase"
           onChange={e => this.setState({ value: e.target.value })}
+          onKeyUp={this.submitIfEnter}
+          autoFocus
         />
       </Dimmer>
     );

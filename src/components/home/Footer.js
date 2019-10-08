@@ -17,6 +17,12 @@ export default function Footer() {
           Greenhills Road, Tymon North
           <br />
           Dublin 24, Ireland
+          <br />
+          <br />
+          <a className="email-link" href="mailto:info@maiyouth.ie">
+            <Icon name="mail outline" />
+            info@maiyouth.ie
+          </a>
         </p>
       </div>
       <div className="icon-links">

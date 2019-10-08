@@ -18,28 +18,30 @@ class ArticlesTable extends PureComponent {
     const { articles, addArticle } = this.props;
 
     return (
-      <Segment position="center">
-        <Header className="ArticlesHeader">
-                    Articles
-        </Header>
-        <ArticleFormModal
-          onSubmit={addArticle}
-          trigger={<Button className="NewArticleButton" fixed="right">New Article</Button>}
-        />
-        <Table compact celled>
-          <Table.Header fullWidth>
-            <Table.Row>
-              <Table.HeaderCell>Article Name</Table.HeaderCell>
-              <Table.HeaderCell>Author</Table.HeaderCell>
-              <Table.HeaderCell>Description</Table.HeaderCell>
-              <Table.HeaderCell width={2}> Actions </Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            <ArticleTableRows articles={articles} />
-          </Table.Body>
-        </Table>
-      </Segment>
+      <div className="main-content">
+        <Segment position="center">
+          <Header className="header">
+            Articles
+          </Header>
+          <ArticleFormModal
+            onSubmit={addArticle}
+            trigger={<Button className="main-btn" fixed="right">New Article</Button>}
+          />
+          <Table compact celled>
+            <Table.Header fullWidth>
+              <Table.Row>
+                <Table.HeaderCell>Article Name</Table.HeaderCell>
+                <Table.HeaderCell>Author</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
+                <Table.HeaderCell width={2}> Actions </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              <ArticleTableRows articles={articles} />
+            </Table.Body>
+          </Table>
+        </Segment>
+      </div>
     );
   }
 }
