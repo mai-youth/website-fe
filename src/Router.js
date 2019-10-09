@@ -21,12 +21,8 @@ export default function Router() {
         <Route exact path="/auth" component={AuthPage} />
         <Route exact path="/contact" component={ContactPage} />
         <Route exact path="/events" component={EventsPage} />
-        {shouldShowArticles && (
-          <React.Fragment>
-            <Route path="/articles/:id" component={ArticleView} />
-            <Route path="/articles" component={ArticlesPage} />
-          </React.Fragment>
-        )}
+        {shouldShowArticles && <Route path="/articles/:id" component={ArticleView} />}
+        {shouldShowArticles && <Route path="/articles" component={ArticlesPage} />}
         <Route path="/gallery" component={GalleryPage} />
         <Route path="/" component={() => <ErrorMessage errorCode={404} />} />
       </Switch>

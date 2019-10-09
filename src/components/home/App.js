@@ -3,7 +3,7 @@ import { Image } from 'semantic-ui-react';
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
-import screenImg from '../../assets/prayer.jpg';
+import screenImg from '../../assets/main-banner.jpg';
 
 const content = [{
   title: 'Who We Are',
@@ -49,7 +49,7 @@ const content = [{
 
 export default function App() {
   return (
-    <React.Fragment>
+    <div className="page-content">
       <Header />
       <Image src={screenImg} fluid />
       {content.map(({ title, body, color }, key) => (
@@ -61,6 +61,6 @@ export default function App() {
         />
       ))}
       <Footer />
-    </React.Fragment>
+    </div>
   );
 }

@@ -4,26 +4,28 @@ import Logo from '../Logo';
 
 export default function Footer() {
   return (
-    <footer className="container">
-      <div>
-        <Logo size="small" />
-      </div>
-      <div className="padded-item">
-        <b>MAI Youth Team</b>
-        <p>
-          <br />
-          Muslim Association of Ireland Youth Committee
-          <br />
-          Greenhills Road, Tymon North
-          <br />
-          Dublin 24, Ireland
-          <br />
-          <br />
-          <a className="email-link" href="mailto:info@maiyouth.ie">
-            <Icon name="mail outline" />
-            info@maiyouth.ie
-          </a>
-        </p>
+    <footer>
+      <div className="container">
+        <div>
+          <Logo size="small" />
+        </div>
+        <div className="padded-item">
+          <b>MAI Youth Team</b>
+          <p>
+            <br />
+            Muslim Association of Ireland Youth Committee
+            <br />
+            Greenhills Road, Tymon North
+            <br />
+            Dublin 24, Ireland
+            <br />
+            <br />
+            <a className="email-link" href="mailto:info@maiyouth.ie">
+              <Icon name="mail outline" />
+              info@maiyouth.ie
+            </a>
+          </p>
+        </div>
       </div>
       <div className="icon-links">
         <a className="fb" href="https://www.facebook.com/MAIYouthIE"><Icon name="facebook official" size="big" /></a>
