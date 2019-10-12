@@ -19,7 +19,7 @@ class ArticlesTable extends PureComponent {
 
     return (
       <div className="main-content">
-        <Segment position="center">
+        <Segment position="center" className="container">
           <Header className="header">
             Articles
           </Header>
@@ -27,7 +27,7 @@ class ArticlesTable extends PureComponent {
             onSubmit={addArticle}
             trigger={<Button className="main-btn" fixed="right">New Article</Button>}
           />
-          <Table compact celled>
+          <Table unstackable celled>
             <Table.Header fullWidth>
               <Table.Row>
                 <Table.HeaderCell>Article Name</Table.HeaderCell>

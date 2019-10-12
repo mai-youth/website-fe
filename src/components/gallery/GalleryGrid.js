@@ -5,6 +5,8 @@ import { imageKeys } from '../../constants/gallery';
 const getImages = () => imageKeys.map(key => ({
   src: `https://imgur.com/${key}.jpg`,
   thumbnail: `https://imgur.com/${key}.jpg`,
+  thumbnailWidth: 300,
+  thumbnailHeight: 180,
 }));
 
 export default function GalleryGrid() {

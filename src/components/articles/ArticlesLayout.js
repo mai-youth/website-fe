@@ -19,7 +19,7 @@ class ArticlesLayout extends PureComponent {
 
     return (
       <div className="articles-container">
-        <Card.Group itemsPerRow={3} centered doubling>
+        <Card.Group centered doubling>
           {articles.map(({ id, title, body, author, createdAt }) => (
             <Card
               key={id}

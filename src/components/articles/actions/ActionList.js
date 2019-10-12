@@ -31,6 +31,7 @@ export default class ActionList extends PureComponent {
 
     return (
       <List className="action-list" verticalAlign="middle">
+        {window.innerWidth > 600 && (
         <List.Item className="action-item">
           <Popup
             trigger={<Button circular color="green" icon="share alternate" onClick={() => copyToClipboard('share-text')} />}
@@ -41,6 +42,7 @@ export default class ActionList extends PureComponent {
             <Input id="share-text" value={window.location.href} readOnly style={{ width: '250px' }} />
           </Popup>
         </List.Item>
+        )}
         <List.Item>
           <Button circular color={liked ? 'pink' : 'teal'} icon="like" onClick={this.toggleLike} />
         </List.Item>
