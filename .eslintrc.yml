@@ -21,5 +21,4 @@ rules: {
   react/require-default-props: warn,
   react/destructuring-assignment: warn,
   no-shadow: warn,
-  max-len: [2, 170, 2]
 }

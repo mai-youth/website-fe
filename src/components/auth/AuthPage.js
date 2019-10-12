@@ -3,10 +3,10 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { Dimmer, Input } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
 import { authenticate, restoreSession } from '../../actions/auth';
 import { getAuthStatus } from '../../selectors/auth';
 import Status from '../../constants/status';
-import { toast } from 'react-toastify';
 
 class AuthPage extends PureComponent {
   constructor(props) {
