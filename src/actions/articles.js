@@ -47,6 +47,8 @@ export function addArticle(articleDetails) {
   };
 }
 
+export function saveArticle() {}
+
 // Authenticated
 export function editArticle(article, updates) {
   const updatedField = (newVal, oldVal) => (
