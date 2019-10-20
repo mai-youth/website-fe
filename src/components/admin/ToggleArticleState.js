@@ -11,7 +11,6 @@ class ToggleArticleState extends React.PureComponent {
 
   toggleArticleState() {
     // eslint-disable-next-line no-unused-vars
-    const { value } = this.state;
     const { published } = this.state;
     this.setState({ published: !published });
     this.setState({ value: 'Draft' });
@@ -21,7 +20,7 @@ class ToggleArticleState extends React.PureComponent {
     const { value } = this.state;
     return (
       <div>
-        <button value={value} onClick={this.toggleArticleState} />
+        <button type="submit" value={value} onClick={this.toggleArticleState} />
       </div>
     );
   }
