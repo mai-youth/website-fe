@@ -6,6 +6,7 @@ import ArticleFormModal from './ArticleFormModal';
 import ConfirmDialog from './ConfirmDialog';
 import { editArticle, deleteArticle } from '../../actions/articles';
 import { stripTags } from '../../utils/stringUtils';
+import ToggleArticleState from './ToggleArticleState';
 
 const formatDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -43,6 +44,7 @@ class ArticleTableRows extends PureComponent {
               icon="delete"
             />
           </ConfirmDialog>
+          <ToggleArticleState />
         </Table.Cell>
       </Table.Row>
     ));
