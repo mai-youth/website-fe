@@ -5,7 +5,7 @@ class ToggleArticleState extends React.PureComponent {
     super(props);
     this.state = {
       published: false,
-      value: 'Published',
+      value: 'Publish',
     };
   }
 
@@ -13,7 +13,7 @@ class ToggleArticleState extends React.PureComponent {
     // eslint-disable-next-line no-unused-vars
     const { published } = this.state;
     this.setState({ published: !published });
-    this.setState({ value: 'Draft' });
+    this.setState({ value: 'Unpublish' });
   }
 
   render() {
