@@ -48,6 +48,14 @@ export function likeArticle(articleId) {
   return fetch(`${API_BASE}/articles/article/${articleId}/liked`, { method: 'POST' });
 }
 
+export function publishArticle(articleId) {
+  return fetch(`${API_BASE}/articles/article/${articleId}/publish`, { method: 'POST' });
+}
+
+export function unpublishArticle(articleId) {
+  return fetch(`${API_BASE}/articles/article/${articleId}/unpublish`, { method: 'POST' });
+}
+
 export function viewArticle(articleID) {
   return fetch(`${API_BASE}/articles/article/${articleID}/seen`, { method: 'POST' });
 }

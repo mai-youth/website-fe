@@ -7,7 +7,6 @@ class ArticleFormModal extends PureComponent {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
-    this.save = this.save.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -18,8 +17,6 @@ class ArticleFormModal extends PureComponent {
         title: null,
       },
       modalOpen: false,
-      // eslint-disable-next-line react/no-unused-state
-      articleState: 'editing',
     };
   }
 
@@ -43,42 +40,18 @@ class ArticleFormModal extends PureComponent {
     });
   }
 
-  toggleArticleState(event) {
-    if (event.target.id === 'submit') {
-      // eslint-disable-next-line react/no-unused-state
-      this.setState({ articleState: 'submitArticle' });
-    } else if (event.target.id === 'save') {
-      // eslint-disable-next-line react/no-unused-state
-      this.setState({ articleState: 'saveArticle' });
-    }
-  }
-
   toggleModal() {
     const { modalOpen } = this.state;
     this.setState({ modalOpen: !modalOpen });
   }
 
-  handleArticleState() {
-    const { article } = this.state;
-    if (article.articleState === 'submitArticle') {
-      this.submit();
-    } else if (article.articleState === 'saveArticle') {
-      this.save();
-    }
-  }
-
-  submit(e) {
+  submit(shouldPublish) {
     const { form } = this.state;
     const { onSubmit } = this.props;
-    e.preventDefault();
-    onSubmit(form);
-    this.toggleModal();
-  }
-
-  save() {
-    const { form } = this.state;
-    const { onSave } = this.props;
-    onSave(form);
+    onSubmit({
+      ...form,
+      published: shouldPublish,
+    });
     this.toggleModal();
   }
 
@@ -95,7 +68,7 @@ class ArticleFormModal extends PureComponent {
       >
         <Modal.Header>{modalTitle}</Modal.Header>
         <Modal.Content>
-          <Form onSubmit={this.handleArticleState}>
+          <Form>
             <Form.Group widths="equal">
               <Form.Input
                 fluid
@@ -119,8 +92,8 @@ class ArticleFormModal extends PureComponent {
               defaultValue={defaultValues.body}
               placeholder="Article goes here..."
             />
-            <Button onClick={this.toggleArticleState} positive type="submit">Submit</Button>
-            <Button onClick={this.toggleArticleState} type="submit">Save</Button>
+            <Button positive onClick={() => this.submit(true)}>Publish</Button>
+            <Button onClick={() => this.submit(false)}>Save</Button>
           </Form>
         </Modal.Content>
       </Modal>
@@ -136,7 +109,6 @@ ArticleFormModal.defaultProps = {
 ArticleFormModal.propTypes = {
   trigger: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
   modalTitle: PropTypes.string,
   defaultValues: PropTypes.shape({
     author: PropTypes.string,

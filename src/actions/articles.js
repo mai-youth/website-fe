@@ -47,8 +47,6 @@ export function addArticle(articleDetails) {
   };
 }
 
-export function saveArticle() {}
-
 // Authenticated
 export function editArticle(article, updates) {
   const updatedField = (newVal, oldVal) => (
@@ -98,6 +96,20 @@ export function likeArticle(articleId) {
   return (dispatch) => {
     dispatch({ type: Actions.LIKED_ARTICLE });
     ArticlesApi.likeArticle(articleId);
+  };
+}
+
+export function publishArticle(articleId) {
+  return (dispatch) => {
+    dispatch({ type: Actions.PUBLISH_ARTICLE });
+    ArticlesApi.publishArticle(articleId);
+  };
+}
+
+export function unpublishArticle(articleId) {
+  return (dispatch) => {
+    dispatch({ type: Actions.UNPUBLISH_ARTICLE });
+    ArticlesApi.unpublishArticle(articleId);
   };
 }
 

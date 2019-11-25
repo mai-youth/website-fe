@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Segment, Header, Table, Button } from 'semantic-ui-react';
 import { getArticlesFromState } from '../../selectors/articles';
-import { getArticles, addArticle, saveArticle } from '../../actions/articles';
+import { getArticles, addArticle } from '../../actions/articles';
 import ArticleTableRows from './ArticleTableRows';
 import ArticleFormModal from './ArticleFormModal';
 
@@ -15,7 +15,7 @@ class ArticlesTable extends PureComponent {
 
   render() {
     // eslint-disable-next-line no-shadow
-    const { articles, addArticle, saveArticle } = this.props;
+    const { articles, addArticle } = this.props;
 
     return (
       <div className="main-content">
@@ -25,7 +25,6 @@ class ArticlesTable extends PureComponent {
           </Header>
           <ArticleFormModal
             onSubmit={addArticle}
-            onSave={saveArticle}
             trigger={<Button className="main-btn" fixed="right">New Article</Button>}
           />
           <Table unstackable celled>
@@ -38,6 +37,7 @@ class ArticlesTable extends PureComponent {
                 <Table.HeaderCell>Likes</Table.HeaderCell>
                 <Table.HeaderCell>Created On</Table.HeaderCell>
                 <Table.HeaderCell>Last Updated</Table.HeaderCell>
+                <Table.HeaderCell>Published</Table.HeaderCell>
                 <Table.HeaderCell>Actions</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -59,7 +59,6 @@ ArticlesTable.propTypes = {
   articles: PropTypes.array,
   getArticles: PropTypes.func.isRequired,
   addArticle: PropTypes.func.isRequired,
-  saveArticle: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -69,7 +68,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getArticles: () => dispatch(getArticles()),
   addArticle: article => dispatch(addArticle(article)),
-  saveArticle: article => dispatch(saveArticle(article)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticlesTable);
