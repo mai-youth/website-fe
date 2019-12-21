@@ -99,6 +99,20 @@ export function likeArticle(articleId) {
   };
 }
 
+export function publishArticle(articleId) {
+  return (dispatch) => {
+    dispatch({ type: Actions.PUBLISH_ARTICLE });
+    ArticlesApi.publishArticle(articleId);
+  };
+}
+
+export function unpublishArticle(articleId) {
+  return (dispatch) => {
+    dispatch({ type: Actions.UNPUBLISH_ARTICLE });
+    ArticlesApi.unpublishArticle(articleId);
+  };
+}
+
 export function viewArticle(articleId) {
   return (dispatch) => {
     dispatch({ type: Actions.VIEWED_ARTICLE });

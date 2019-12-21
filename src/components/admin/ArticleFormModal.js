@@ -45,11 +45,13 @@ class ArticleFormModal extends PureComponent {
     this.setState({ modalOpen: !modalOpen });
   }
 
-  submit(e) {
+  submit(shouldPublish) {
     const { form } = this.state;
     const { onSubmit } = this.props;
-    e.preventDefault();
-    onSubmit(form);
+    onSubmit({
+      ...form,
+      published: shouldPublish,
+    });
     this.toggleModal();
   }
 
@@ -66,7 +68,7 @@ class ArticleFormModal extends PureComponent {
       >
         <Modal.Header>{modalTitle}</Modal.Header>
         <Modal.Content>
-          <Form onSubmit={this.submit}>
+          <Form>
             <Form.Group widths="equal">
               <Form.Input
                 fluid
@@ -90,7 +92,8 @@ class ArticleFormModal extends PureComponent {
               defaultValue={defaultValues.body}
               placeholder="Article goes here..."
             />
-            <Button positive type="submit">Submit</Button>
+            <Button positive onClick={() => this.submit(true)}>Publish</Button>
+            <Button onClick={() => this.submit(false)}>Save</Button>
           </Form>
         </Modal.Content>
       </Modal>

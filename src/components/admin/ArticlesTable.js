@@ -37,6 +37,7 @@ class ArticlesTable extends PureComponent {
                 <Table.HeaderCell>Likes</Table.HeaderCell>
                 <Table.HeaderCell>Created On</Table.HeaderCell>
                 <Table.HeaderCell>Last Updated</Table.HeaderCell>
+                <Table.HeaderCell>Published</Table.HeaderCell>
                 <Table.HeaderCell>Actions</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
