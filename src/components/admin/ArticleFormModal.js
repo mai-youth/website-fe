@@ -13,8 +13,7 @@ class ArticleFormModal extends PureComponent {
     this.state = {
       form: {
         author: 'MAI Youth Team',
-        body: null,
-        title: null,
+        ...props.defaultValues,
       },
       modalOpen: false,
     };
@@ -50,7 +49,7 @@ class ArticleFormModal extends PureComponent {
     const { onSubmit } = this.props;
     onSubmit({
       ...form,
-      published: shouldPublish,
+      published: shouldPublish ? 1 : 0,
     });
     this.toggleModal();
   }
@@ -93,7 +92,7 @@ class ArticleFormModal extends PureComponent {
               placeholder="Article goes here..."
             />
             <Button positive onClick={() => this.submit(true)}>Publish</Button>
-            <Button onClick={() => this.submit(false)}>Save</Button>
+            <Button onClick={() => this.submit(false)}>Save Without Publishing</Button>
           </Form>
         </Modal.Content>
       </Modal>

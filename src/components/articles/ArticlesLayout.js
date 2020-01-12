@@ -20,7 +20,7 @@ class ArticlesLayout extends PureComponent {
     return (
       <div className="articles-container">
         <Card.Group centered doubling>
-          {articles.map(({ id, title, body, author, createdAt }) => (
+          {articles.filter(({ published }) => published).map(({ id, title, body, author, createdAt }) => (
             <Card
               key={id}
               image={logo}

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Image } from 'semantic-ui-react';
 import Header from './Header';
