@@ -21,4 +21,5 @@ rules: {
   react/require-default-props: warn,
   react/destructuring-assignment: warn,
   no-shadow: warn,
+  max-len: [1, 140, 2, {"ignoreUrls": true}],
 }

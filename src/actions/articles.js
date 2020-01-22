@@ -1,6 +1,7 @@
 import * as Actions from '../constants/actions';
 import * as ArticlesApi from '../api/articles';
 import { invalidateAuth } from './auth';
+import { capitalizeFirst } from '../utils/stringUtils';
 
 export function getArticles() {
   return async (dispatch) => {
@@ -53,13 +54,18 @@ export function editArticle(article, updates) {
     newVal !== null && newVal !== oldVal ? newVal : undefined
   );
 
-  return async (dispatch) => {
-    const updatedFields = {
-      newTitle: updatedField(updates.title, article.title),
-      newBody: updatedField(updates.body, article.body),
-      newAuthor: updatedField(updates.author, article.author),
-    };
+  const getUpdatedFields = (allFields, updatedFields) => {
+    const obj = {};
+    Object.keys(allFields).forEach((key) => {
+      const newKey = `new${capitalizeFirst(key)}`;
+      obj[newKey] = updatedField(updatedFields[key], allFields[key]);
+    });
 
+    return obj;
+  };
+
+  return async (dispatch) => {
+    const updatedFields = getUpdatedFields(article, updates);
     const response = await ArticlesApi.editArticle(article.id, updatedFields);
     switch (response.status) {
       case 200:
@@ -91,25 +97,10 @@ export function deleteArticle(articleID) {
   };
 }
 
-
 export function likeArticle(articleId) {
   return (dispatch) => {
     dispatch({ type: Actions.LIKED_ARTICLE });
     ArticlesApi.likeArticle(articleId);
-  };
-}
-
-export function publishArticle(articleId) {
-  return (dispatch) => {
-    dispatch({ type: Actions.PUBLISH_ARTICLE });
-    ArticlesApi.publishArticle(articleId);
-  };
-}
-
-export function unpublishArticle(articleId) {
-  return (dispatch) => {
-    dispatch({ type: Actions.UNPUBLISH_ARTICLE });
-    ArticlesApi.unpublishArticle(articleId);
   };
 }
 

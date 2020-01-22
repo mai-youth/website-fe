@@ -8,6 +8,7 @@ export default function Content({ title, body, color, borderless }) {
   return (
     <div className={classes} style={{ backgroundColor: color }}>
       <h1>{title}</h1>
+      {/* eslint-disable-next-line react/no-danger */}
       <p dangerouslySetInnerHTML={{ __html: body }} />
     </div>
   );
