@@ -28,6 +28,7 @@ ReactDOM.render(
       rtl={false}
       pauseOnVisibilityChange
       draggable
+      style={{ top: '70px' }}
     />
   </Provider>,
   document.getElementById('root'),
