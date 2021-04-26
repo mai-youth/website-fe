@@ -24,6 +24,7 @@
     "serve": "^11.3.2"
   },
   "scripts": {
+    "devStart": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
     "test": "cross-env CI=true react-scripts test --env=jsdom",
