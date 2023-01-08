@@ -7,6 +7,7 @@ import { getArticlesFromState } from '../../selectors/articles';
 import logo from '../../assets/placeholder.jpg';
 import { stripTags } from '../../utils/stringUtils';
 import { getYearMonthFromDate } from '../../utils/date';
+import ErrorMessage from '../ErrorMessage';
 
 class ArticlesLayout extends PureComponent {
   componentDidMount() {
@@ -16,11 +17,21 @@ class ArticlesLayout extends PureComponent {
 
   render() {
     const { articles } = this.props;
+    const publishedArticles = articles.filter(({ published }) => published);
+
+    if (publishedArticles.length === 0) {
+      return <ErrorMessage
+        title="No Articles Found"
+        body="There are no articles to read at the moment. Please come back later."
+        color="grey"
+        icon="folder open outline"
+      />
+    }
 
     return (
       <div className="articles-container">
         <Card.Group centered doubling>
-          {articles.filter(({ published }) => published).map(({ id, title, body, author, createdAt }) => (
+          {publishedArticles.map(({ id, title, body, author, createdAt }) => (
             <Card
               key={id}
               image={logo}

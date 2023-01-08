@@ -47,6 +47,9 @@ class ArticleFormModal extends PureComponent {
   submit(shouldPublish) {
     const { form } = this.state;
     const { onSubmit } = this.props;
+    if (!form.title) {
+      return;
+    }
     onSubmit({
       ...form,
       published: shouldPublish ? 1 : 0,

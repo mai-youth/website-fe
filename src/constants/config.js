@@ -1,1 +1,1 @@
-export const shouldShowArticles = process.env.REACT_APP_SHOW_ARTICLES === 'true';
+export const shouldShowArticles = true;

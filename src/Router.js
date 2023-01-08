@@ -9,7 +9,7 @@ import ContactPage from './components/contact/ContactPage';
 import EventsPage from './components/events/EventsPage';
 import GalleryPage from './components/gallery/GalleryPage';
 import AuthPage from './components/auth/AuthPage';
-import ErrorMessage from './components/ErrorMessage';
+import ErrorPage from './components/ErrorPage';
 import { shouldShowArticles } from './constants/config';
 
 export default function Router() {
@@ -24,7 +24,7 @@ export default function Router() {
         {shouldShowArticles && <Route path="/articles/:id" component={ArticleView} />}
         {shouldShowArticles && <Route path="/articles" component={ArticlesPage} />}
         <Route path="/gallery" component={GalleryPage} />
-        <Route path="/" component={() => <ErrorMessage errorCode={404} />} />
+        <Route path="/" component={() => <ErrorPage errorCode={404} />} />
       </Switch>
     </BrowserRouter>
   );

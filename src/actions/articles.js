@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import * as Actions from '../constants/actions';
 import * as ArticlesApi from '../api/articles';
 import { invalidateAuth } from './auth';
@@ -43,6 +44,7 @@ export function addArticle(articleDetails) {
         invalidateAuth(dispatch);
         break;
       default:
+        toast.error(`Failed to add the article. Error code: ${response.status}.`)
         dispatch({ type: Actions.ERROR_ADDING_ARTICLE });
     }
   };
@@ -75,6 +77,7 @@ export function editArticle(article, updates) {
         invalidateAuth(dispatch);
         break;
       default:
+        toast.error(`Failed to add the article. Error code: ${response.status}.`)
         dispatch({ type: Actions.ERROR_EDITING_ARTICLE });
     }
   };
